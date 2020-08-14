@@ -1,10 +1,6 @@
 package com.company;
-
 import self.my.AOCTv;
 import self.my.ChangHongTv;
-import self.my.RemoteControll;
-
-import java.rmi.Remote;
 
 public class Main {
 
@@ -21,3 +17,4 @@ public class Main {
         aocRemote.open();
     }
 }
+
