@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Bridge;
 
 public interface DrawAPI {
     public void drawCircle(int radius, int x, int y);

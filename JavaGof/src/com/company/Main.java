@@ -1,4 +1,7 @@
 package com.company;
+import com.company.Bridge.Circle;
+import com.company.Bridge.GreenCircle;
+import com.company.Bridge.RedCircle;
 import self.my.AOCTv;
 import self.my.ChangHongTv;
 

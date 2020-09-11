@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Bridge;
 
 public class Circle extends Shape {
     private int x, y, radius;

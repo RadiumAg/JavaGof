@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Bridge;
 
 public abstract class Shape {
     protected DrawAPI drawAPI;
