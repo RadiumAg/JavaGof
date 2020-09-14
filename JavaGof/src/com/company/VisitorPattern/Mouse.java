@@ -1,8 +1,8 @@
 package com.company.VisitorPattern;
 
-public class Monitor implements ComputerPart {
+public class Mouse implements  ComputerPart {
     @Override
     public void accept(ComputerPartVisitor computerPartVisitor) {
-          computerPartVisitor.visit(this);
+       computerPartVisitor.visit(this);
     }
 }
