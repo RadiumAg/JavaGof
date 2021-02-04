@@ -21,6 +21,7 @@ class Tree {
                 current = current.rightChild;
             }
 
+            // 到尾结点
             if (current == null){
                 return null;
             }
