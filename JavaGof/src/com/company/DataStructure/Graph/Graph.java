@@ -137,10 +137,34 @@ public class Graph {
                 vertexList[j] = vertexList[j + 1];
             }
 
-            // 删除邻接矩阵的行
+            // 邻接矩阵表的行前移
+            for (int row = delVert; row < nVerts - 1; row++) {
+                moveRowUp(row, nVerts);
+            }
+
+            // 邻接矩阵的列前移
+            for (int col = delVert; col < nVerts - 1; col++) {
+                moveColLeft(col, nVerts - 1);
+            }
+        }
+        nVerts--;
+    }
+
+    private void moveRowUp(int row, int length) {
+        for (int col = 0; col < length; col++) {
+            adjMat[row][col] = adjMat[row + 1][col];
         }
     }
 
+    private void moveColLeft(int col, int length) {
+        for (int row = 0; row < length; row++) {
+            adjMat[row][col] = adjMat[row + 1][col];
+        }
+    }
+
+    /**
+     * @apiNote 拓扑排序
+     */
     public void tppo() {
         int orig_nVerts = nVerts;
 
@@ -150,8 +174,13 @@ public class Graph {
                 System.out.print("有环");
                 return;
             }
-
-
+            sortedArray[nVerts - 1] = vertexList[currentVertex].label;
+            deleteVertex(currentVertex);
+        }
+        System.out.print("Topologically sorted order:");
+        for (int j = 0; j < orig_nVerts; j++) {
+            System.out.print(sortedArray[j]);
+            System.out.print("");
         }
     }
 
