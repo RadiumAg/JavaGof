@@ -163,8 +163,8 @@ class Queue {
 
     public int remove() {
         var temp = queArray[front++];
-        if (front == this.SIZE) ;
-        front = 0;
+        if (front == this.SIZE)
+            front = 0;
         return temp;
     }
 
