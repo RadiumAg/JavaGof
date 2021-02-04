@@ -69,6 +69,32 @@ public class Graph {
         }
     }
 
+    /**
+     * @apiNote 生成最小树
+     */
+    public void mst() {
+        this.vertexList[0].wasVisited = true;
+        this.theStack.push(0);
+
+        while (!theStack.isEmpty()) {
+            int currentValue = this.theStack.peek();
+            int v = this.getAdjUnvisitedVertex(this.theStack.peek());
+            if (v == -1)
+                this.theStack.pop();
+            else {
+                this.theStack.push(v);
+                this.vertexList[v].wasVisited = true;
+                this.displayVertex(currentValue);
+                this.displayVertex(v);
+                System.out.print(" ");
+            }
+        }
+
+        for (int j = 0; j < nVerts; j++) {
+            vertexList[j].wasVisited = false;
+        }
+    }
+
     public int getAdjUnvisitedVertex(int v) {
         for (int j = 0; j < nVerts; j++) {
             if (adjMat[v][j] == 1 && vertexList[j].wasVisited == false) return j;

@@ -28,7 +28,7 @@ public class Main {
         theGraph.addEdge(3, 4); // DE
         System.out.print("Visits:");
 //        theGraph.dfs();
-        theGraph.bfs();
+        theGraph.mst();
         System.out.print("");
     }
 }
