@@ -1,6 +1,8 @@
 package com.company.DataStructure.Graph;
 
-// 图
+/**
+ * 图类
+ */
 public class Graph {
     private final int MAX_VERTS = 20;
     private Vertex vertexList[]; // 节点列表
@@ -106,8 +108,20 @@ public class Graph {
         vertexList[nVerts++] = new Vertex(lab);
     }
 
-    public void addEdge(int start, int end) {
+    public int onSuccessors(){
+        boolean isEdge;
+        for (int row = 0; row < nVerts ; row++) {
+            for (int col = 0; col < row+1; col++) {
+
+            }
+        }
+    }
+
+    public void addEdge(int start, int end, boolean isDirection) {
         adjMat[start][end] = 1;
+        if (isDirection) {
+            return;
+        }
         adjMat[end][start] = 1;
     }
 
@@ -117,7 +131,7 @@ public class Graph {
 }
 
 /**
- * @implNote 顶点
+ *  顶点类
  */
 class Vertex {
     public char label;
@@ -130,7 +144,7 @@ class Vertex {
 }
 
 /**
- * @implNote 顶点
+ *  操作栈类
  */
 class StackX {
     private final int SIZE = 20;
@@ -167,7 +181,7 @@ class StackX {
 
 
 /**
- * @implNote 队列
+ * 队列
  */
 class Queue {
     private final int SIZE = 20;
