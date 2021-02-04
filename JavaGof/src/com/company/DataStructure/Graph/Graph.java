@@ -7,9 +7,11 @@ public class Graph {
     private int adjMat[][]; // 邻接矩阵
     private int nVerts; // 当前的节点索引
     private StackX theStack;
+    private Queue theQueue;
 
     public Graph() {
         theStack = new StackX();
+        theQueue = new Queue();
         vertexList = new Vertex[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
         nVerts = 0;
@@ -20,6 +22,9 @@ public class Graph {
         }
     }
 
+    /**
+     * @apiNote 深度遍历
+     */
     public void dfs() {
         vertexList[0].wasVisited = true;
         displayVertex(0);
@@ -39,7 +44,29 @@ public class Graph {
         for (int j = 0; j < nVerts; j++) {
             vertexList[j].wasVisited = false;
         }
+    }
 
+    /**
+     * @apiNote 广度遍历
+     */
+    public void bfs() {
+        this.vertexList[0].wasVisited = true;
+        displayVertex(0);
+        theQueue.insert(0);
+        int v2;
+
+        while (!theQueue.isEmpty()) {
+            int v1 = theQueue.remove();
+            while ((v2 = getAdjUnvisitedVertex(v1)) != -1) {
+                vertexList[v2].wasVisited = true;
+                displayVertex(v2);
+                theQueue.insert(v2);
+            }
+        }
+
+        for (int j = 0; j < nVerts; j++) {
+            vertexList[j].wasVisited = false;
+        }
     }
 
     public int getAdjUnvisitedVertex(int v) {
@@ -63,7 +90,9 @@ public class Graph {
     }
 }
 
-// 顶点
+/**
+ * @implNote 顶点
+ */
 class Vertex {
     public char label;
     public boolean wasVisited;
@@ -74,6 +103,9 @@ class Vertex {
     }
 }
 
+/**
+ * @implNote 顶点
+ */
 class StackX {
     private final int SIZE = 20;
     private int[] st;
@@ -88,15 +120,55 @@ class StackX {
         st[++top] = j;
     }
 
+    /**
+     * @return 出栈，并返回出栈的值
+     */
     public int pop() {
         return st[this.top--];
     }
 
+    /**
+     * @return 返回栈顶的值
+     */
     public int peek() {
         return st[this.top];
     }
 
     public boolean isEmpty() {
         return (this.top == -1);
+    }
+}
+
+
+/**
+ * @implNote 队列
+ */
+class Queue {
+    private final int SIZE = 20;
+    private int[] queArray;
+    private int front;
+    private int rear;
+
+    public Queue() {
+        queArray = new int[this.SIZE];
+        front = 0;
+        rear = -1;
+    }
+
+    public void insert(int j) {
+        if (rear == SIZE - 1)
+            rear = -1;
+        queArray[++rear] = j;
+    }
+
+    public int remove() {
+        var temp = queArray[front++];
+        if (front == this.SIZE) ;
+        front = 0;
+        return temp;
+    }
+
+    public boolean isEmpty() {
+        return (rear + 1 == front || (front + SIZE - 1 == rear));
     }
 }

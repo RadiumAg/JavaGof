@@ -23,11 +23,12 @@ public class Main {
         theGraph.addVertex('D');
         theGraph.addVertex('E');
         theGraph.addEdge(0, 1); // AB
-        theGraph.addEdge(1, 2); //BC
-        theGraph.addEdge(0, 3); //AD
-        theGraph.addEdge(3, 4); //DE
+        theGraph.addEdge(1, 2); // BC
+        theGraph.addEdge(0, 3); // AD
+        theGraph.addEdge(3, 4); // DE
         System.out.print("Visits:");
-        theGraph.dfs();
+//        theGraph.dfs();
+        theGraph.bfs();
         System.out.print("");
     }
 }
