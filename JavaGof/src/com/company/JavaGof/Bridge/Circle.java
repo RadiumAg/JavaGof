@@ -1,4 +1,4 @@
-package com.company.Bridge;
+package com.company.JavaGof.Bridge;
 
 public class Circle extends Shape {
     private int x, y, radius;

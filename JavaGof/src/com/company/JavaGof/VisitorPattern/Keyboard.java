@@ -1,4 +1,4 @@
-package com.company.VisitorPattern;
+package com.company.JavaGof.VisitorPattern;
 
 public class Keyboard implements ComputerPart {
 

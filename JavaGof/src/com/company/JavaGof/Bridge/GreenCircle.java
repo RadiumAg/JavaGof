@@ -1,4 +1,4 @@
-package com.company.Bridge;
+package com.company.JavaGof.Bridge;
 
 public class GreenCircle implements DrawAPI {
     @Override

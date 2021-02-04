@@ -1,9 +1,11 @@
 package com.company;
-import com.company.Bridge.Circle;
-import com.company.Bridge.GreenCircle;
-import com.company.Bridge.RedCircle;
+import com.company.JavaGof.Bridge.Circle;
+import com.company.JavaGof.Bridge.GreenCircle;
+import com.company.JavaGof.Bridge.RedCircle;
 import self.my.AOCTv;
 import self.my.ChangHongTv;
+
+import java.util.Arrays;
 
 public class Main {
 
@@ -18,6 +20,10 @@ public class Main {
         var aocRemote = new self.my.Remote(new AOCTv());
         chRemote.open();
         aocRemote.open();
+        int[] a = new int[3];
+        Arrays.stream(a).map(x->2);
     }
 }
+
+
 
