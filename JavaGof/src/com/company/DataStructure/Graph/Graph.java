@@ -10,12 +10,14 @@ public class Graph {
     private int nVerts; // 当前的节点索引
     private StackX theStack;
     private Queue theQueue;
+    private char[] sortedArray;
 
     public Graph() {
         theStack = new StackX();
         theQueue = new Queue();
         vertexList = new Vertex[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
+        this.sortedArray = new char[this.MAX_VERTS];
         nVerts = 0;
         for (int j = 0; j < MAX_VERTS; j++) {
             for (int k = 0; k < MAX_VERTS; k++) {
@@ -108,12 +110,48 @@ public class Graph {
         vertexList[nVerts++] = new Vertex(lab);
     }
 
-    public int onSuccessors(){
+    /**
+     * @return 返回没有后继节点的下标
+     */
+    public int onSuccessors() {
         boolean isEdge;
-        for (int row = 0; row < nVerts ; row++) {
-            for (int col = 0; col < row+1; col++) {
-
+        for (int row = 0; row < nVerts; row++) {
+            isEdge = false;
+            for (int col = row; col < nVerts; col++) {
+                if (this.adjMat[row][col] == 1) {
+                    isEdge = true;
+                    break;
+                }
             }
+            if (!isEdge) {
+                return row;
+            }
+        }
+        return -1;
+    }
+
+    private void deleteVertex(int delVert) {
+        if (delVert != nVerts - 1) {
+            // 列表前移
+            for (int j = delVert; j < nVerts - 1; j++) {
+                vertexList[j] = vertexList[j + 1];
+            }
+
+            // 删除邻接矩阵的行
+        }
+    }
+
+    public void tppo() {
+        int orig_nVerts = nVerts;
+
+        while (nVerts > 0) {
+            int currentVertex = onSuccessors();
+            if (currentVertex == -1) {
+                System.out.print("有环");
+                return;
+            }
+
+
         }
     }
 
@@ -131,7 +169,7 @@ public class Graph {
 }
 
 /**
- *  顶点类
+ * 顶点类
  */
 class Vertex {
     public char label;
@@ -144,7 +182,7 @@ class Vertex {
 }
 
 /**
- *  操作栈类
+ * 操作栈类
  */
 class StackX {
     private final int SIZE = 20;
