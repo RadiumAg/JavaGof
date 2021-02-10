@@ -112,7 +112,7 @@ class Tree {
      * 找到后继节点
      *
      * @param delNode
-     * @return
+     * @return Node
      */
     public Node getSuccessor(Node delNode) {
         Node successorParent = delNode;
