@@ -5,7 +5,7 @@ package com.company.DataStructure.Graph;
  */
 public class Graph {
     private final int MAX_VERTS = 20;
-    private Vertex vertexList[]; // 节点列表
+    private Vertex[] vertexList; // 节点列表
     private int adjMat[][]; // 邻接矩阵
     private int nVerts; // 当前的节点索引
     private StackX theStack;
