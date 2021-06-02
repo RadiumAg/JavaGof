@@ -99,7 +99,7 @@ class Tree {
 
     public Node minimum() {
         Node current;
-        Node last;
+        Node last = null;
         current = root;
         while (current != null) {
             last = current;
