@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="downloadBill (2)">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/downloadBill.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
