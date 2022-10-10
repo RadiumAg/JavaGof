@@ -124,10 +124,10 @@ class Quick3string {
         int v = charAt(a[lo], d);
         int i = lo + 1;
         while (i <= gt) {
-            int t = charAt(a[i],d);
-            if (t<v) exch(a, lt++,i++);
-            else if(t>v) exch(a, i, gt--);
-            else  i++;
-        }
+            int t = charAt(a[i], d);
+            if (t < v) exch(a, lt++, i++);
+            else if (t > v) exch(a, i, gt--);
+            else i++;
         }
     }
+}
