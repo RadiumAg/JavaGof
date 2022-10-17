@@ -17,6 +17,60 @@ public class 字符串 {
 }
 
 
+class TrieSt<Value> {
+    private static int R = 256;
+
+    private Node root;
+
+    private static class Node {
+        private Object val;
+        private Node[] next = new Node[R];
+        private  int cnt = 0;
+
+        public  inst size(){
+            return  size(root);
+        }
+
+        private  int size(Node x) {
+            if(x == null) return 0;
+            if(x.val != null)  cnt++;
+            for (char c = 0; c < R; c++)
+                cnt += size(next[c]);
+            return cnt;
+        }
+    }
+
+
+    public Value get(String key) {
+        var x = get(root, key, 0);
+        if (x == null) return null;
+        return (Value) x.val;
+    }
+
+    private Node get(Node x, String key, int d) {
+        if (x == null) return null;
+        if (d == key.length()) return x;
+        char c = key.charAt(d);
+        return get(x.next[c], key, d + 1);
+    }
+
+    public void put(String key, Value val) {
+        root = put(root, key, val, 0);
+    }
+
+    private Node put(Node x, String key, Value val, int d) {
+        if (x == null) x = new Node();
+        if (d == key.length()) {
+            x.val = val;
+            return x;
+        }
+        char c = key.charAt(d);
+        x.next[c] = put(x.next[c], key, val, d + 1);
+        return x;
+    }
+}
+
+
 /**
  * 低位优先的字符串排序
  */

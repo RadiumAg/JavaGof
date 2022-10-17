@@ -30,9 +30,7 @@ class FrequencyCounter {
     }
 }
 
-class
-
-SequentialSearchSt<Key, Value> {
+class SequentialSearchSt<Key, Value> {
     private Node first;
 
     private class Node {
@@ -47,7 +45,7 @@ SequentialSearchSt<Key, Value> {
         }
 
         public Value get(Key key) {
-            for (Node x = first; x != null; x = x.next) {
+            for (var x = first; x != null; x = x.next) {
                 if (key.equals(x.key))
                     return x.val;
             }
@@ -55,7 +53,7 @@ SequentialSearchSt<Key, Value> {
         }
 
         public void put(Key key, Value val) {
-            for (Node x = first; x != null; x = x.next) {
+            for (var x = first; x != null; x = x.next) {
                 if (key.equals(x.key)) {
                     x.val = val;
                     return;
