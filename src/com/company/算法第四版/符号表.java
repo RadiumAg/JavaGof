@@ -84,15 +84,15 @@ class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
 
-    public  Iterable<Key> keys(Key lo, Key hi) {
-        var q = new Queue<Key>();
-        for(var i = rank(lo);i< rank(hi); i++) {
-            q.enqueue(keys[i]);
-            if(contains(hi))
-                q.enqueue(keys[rank(hi)]);
-            return q;
-        }
-    }
+//    public  Iterable<Key> keys(Key lo, Key hi) {
+//        var q = new Queue<Key>();
+//        for(var i = rank(lo);i< rank(hi); i++) {
+//            q.enqueue(keys[i]);
+//            if(contains(hi))
+//                q.enqueue(keys[rank(hi)]);
+//            return q;
+//        }
+//    }
 
     public Key ceiling(Key key) {
         var i = rank(key);
@@ -106,7 +106,7 @@ class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     // 小于给定键的键的数量
     public int rank(Key key) {
-        var lo = 0, hi = N - 1;
+        int lo = 0, hi = N - 1;
         while (lo <= hi) {
             var mid = lo + (hi - lo) / 2;
             var cmp = key.compareTo(keys[mid]);

@@ -1,75 +1,89 @@
 package com.company.算法第四版;
 
 import edu.princeton.cs.algs4.Insertion;
+import edu.princeton.cs.algs4.StdOut;
 
+import java.sql.Array;
 import java.util.Comparator;
 
-public class 字符串 {
 
+class IndexOrder {
+    private static class Student {
+        private int _key;
+        private String _name;
+
+        public Student(Integer key, String name) {
+            this._key = key;
+            this._name = name;
+        }
+
+        public int key() {
+            return this._key;
+        }
+
+        public String name() {
+            return this._name;
+        }
+
+    }
+
+
+    public static Student[] sort(Student[] a, int R) {
+        var count = new int[R + 1];
+        var aux = new Student[a.length];
+
+        // 统计每个键出现的频率
+        for (var i = 0; i < a.length; i++) {
+            count[a[i].key() + 1]++;
+        }
+
+        // 转换成索引，占坑
+        for (var r = 0; r < R; r++) {
+            count[r + 1] += count[r];
+        }
+
+        // 根据坑位填入aux
+        for (var i = 0; i < a.length; i++) {
+            aux[count[a[i].key()]++] = a[i];
+        }
+
+        // 修改原数组为排序后的顺序
+        for (var i = 0; i < a.length; i++) {
+            a[i] = aux[i];
+        }
+
+        return a;
+    }
 
     public static void main(String[] args) {
-        var test = new String[]{"1", "2", "3", "1"};
-        LSD.sort(test, 1);
-        //for (int i = 0; i <= test.length; i++) {
-        //System.out.println(test[i]);
-        //}
+        var student = new Student[20];
+        var R = 5;
+        student[0] = new Student(2, "Anderson");
+        student[1] = new Student(3, "Brown");
+        student[2] = new Student(3, "Davis");
+        student[3] = new Student(4, "Davis");
+        student[4] = new Student(1, "Harris");
+        student[5] = new Student(3, "Jackson");
+        student[6] = new Student(4, "Johnson");
+        student[7] = new Student(3, "Jones");
+        student[8] = new Student(1, "Martin");
+        student[9] = new Student(2, "Martinez");
+        student[10] = new Student(2, "Miller");
+        student[11] = new Student(1, "Moore");
+        student[12] = new Student(2, "Robinson");
+        student[13] = new Student(4, "Smith");
+        student[14] = new Student(3, "Taylor");
+        student[15] = new Student(4, "Thomas");
+        student[16] = new Student(4, "Thompson");
+        student[17] = new Student(2, "White");
+        student[18] = new Student(3, "Williams");
+        student[19] = new Student(4, "Wilson");
+        sort(student, 5);
+        for (var i = 0; i < student.length; i++) {
+            System.out.println(student[i].key() + student[i].name());
+        }
     }
 }
-
-
-class TrieSt<Value> {
-    private static int R = 256;
-
-    private Node root;
-
-    private static class Node {
-        private Object val;
-        private Node[] next = new Node[R];
-        private  int cnt = 0;
-
-        public  inst size(){
-            return  size(root);
-        }
-
-        private  int size(Node x) {
-            if(x == null) return 0;
-            if(x.val != null)  cnt++;
-            for (char c = 0; c < R; c++)
-                cnt += size(next[c]);
-            return cnt;
-        }
-    }
-
-
-    public Value get(String key) {
-        var x = get(root, key, 0);
-        if (x == null) return null;
-        return (Value) x.val;
-    }
-
-    private Node get(Node x, String key, int d) {
-        if (x == null) return null;
-        if (d == key.length()) return x;
-        char c = key.charAt(d);
-        return get(x.next[c], key, d + 1);
-    }
-
-    public void put(String key, Value val) {
-        root = put(root, key, val, 0);
-    }
-
-    private Node put(Node x, String key, Value val, int d) {
-        if (x == null) x = new Node();
-        if (d == key.length()) {
-            x.val = val;
-            return x;
-        }
-        char c = key.charAt(d);
-        x.next[c] = put(x.next[c], key, val, d + 1);
-        return x;
-    }
-}
-
 
 /**
  * 低位优先的字符串排序
